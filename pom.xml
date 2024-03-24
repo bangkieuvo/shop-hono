@@ -25,6 +25,9 @@
   <properties>
     <spring.version>5.2.9.RELEASE</spring.version>
     <hibernate.version>5.2.12.Final</hibernate.version>
+
+
+    
   </properties>
 
   <dependencies>
