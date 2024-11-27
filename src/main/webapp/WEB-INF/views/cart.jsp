@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="zxx"> 
 
 <!-- Mirrored from htmldemo.hasthemes.com/hono/hono/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Jan 2021 00:32:24 GMT -->
 <!-- Added by HTTrack -->
