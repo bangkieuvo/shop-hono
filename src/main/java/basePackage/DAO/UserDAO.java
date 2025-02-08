@@ -37,18 +37,13 @@ public class UserDAO {
 	public void remove(User user) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.remove(user);
+		session.close();
 	}
 
-	public User login(String username, int hashedPassword) {
-		Session session = this.sessionFactory.openSession();
-		String sql = "FROM User u where (u.username = '" + username + "' )and (password = " + hashedPassword + ")";
-		Query query = session.createQuery(sql, User.class);
-		User user = null;
-		try {
-			user = (User) query.getSingleResult();
-		} catch (NoResultException e) {
-			return null;
-		}
+	public User findByUsername(String username) {
+		Session session = this.sessionFactory.getCurrentSession();
+		User user = session.createQuery("FROM User where username = " + username, User.class).getSingleResult();
+		session.close();
 		return user;
 	}
 

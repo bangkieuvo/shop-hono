@@ -13,8 +13,8 @@ public class User {
 	private int id;
 	@Column(name = "username")
 	private String username;
-	
-	
+	@Column(name = "hashedPassword")
+	private int hashedPassword;
 	public int getId() {
 		return id;
 	}
@@ -26,5 +26,12 @@ public class User {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public int getHashedPassword() {
+		return hashedPassword;
+	}
+	public void setHashedPassword(int hashedPassword) {
+		this.hashedPassword = hashedPassword;
 	}	
+	
 }
