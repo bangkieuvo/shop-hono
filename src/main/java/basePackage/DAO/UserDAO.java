@@ -1,55 +1,53 @@
 package basePackage.DAO;
 
-import java.util.List;
-
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
+import basePackage.Entity.User;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import basePackage.Entity.User;
+import java.util.List;
 
-@Repository(value = "UserDAO")
+@Repository
+@Transactional
 public class UserDAO {
+
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	public void save(User user) {
-		Session session = this.sessionFactory.getCurrentSession();
+	public void add(User user) {
+		Session session = sessionFactory.getCurrentSession();
 		session.save(user);
 	}
 
+	public User get(long id) {
+		Session session = sessionFactory.getCurrentSession();
+		return session.get(User.class, id);
+	}
+
+	public List<User> getAll() {
+		Session session = sessionFactory.getCurrentSession();
+		return session.createQuery("FROM User", User.class).getResultList();
+	}
+
+	public User getByUsername(String username) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "FROM User WHERE username = :username";
+		return session.createQuery(hql, User.class).setParameter("username", username).uniqueResult();
+	}
+
 	public void update(User user) {
-		Session session = this.sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		session.update(user);
 	}
 
-	public User findById(int id) {
-		Session session = this.sessionFactory.openSession();
-		User user = session.find(User.class, id);
-		session.close();
-		return user;
-	}
-
-	public void remove(User user) {
-		Session session = this.sessionFactory.getCurrentSession();
-		session.remove(user);
-		session.close();
-	}
-
-	public User findByUsername(String username) {
-		Session session = this.sessionFactory.getCurrentSession();
-		User user = session.createQuery("FROM User where username = " + username, User.class).getSingleResult();
-		session.close();
-		return user;
-	}
-
-	public List<User> findAll() {
-		Session session = this.sessionFactory.getCurrentSession();
-		List<User> listUser = session.createQuery("FROM User", User.class).getResultList();
-		return listUser;
+	public void delete(int id) {
+		User user = get(id);
+		if (user != null) {
+			Session session = sessionFactory.getCurrentSession();
+			session.delete(user);
+		}
 	}
 }

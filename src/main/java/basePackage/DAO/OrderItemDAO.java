@@ -1,6 +1,6 @@
 package basePackage.DAO;
 
-import basePackage.Entity.Order;
+import basePackage.Entity.OrderItem;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,31 +11,31 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class OrderDAO {
+public class OrderItemDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
 
-    public void save(Order o) {
+    public void save(OrderItem item) {
         Session s = sessionFactory.getCurrentSession();
-        s.saveOrUpdate(o);
+        s.saveOrUpdate(item);
     }
 
-    public Order get(Long id) {
+    public OrderItem get(Long id) {
         Session s = sessionFactory.getCurrentSession();
-        return s.get(Order.class, id);
+        return s.get(OrderItem.class, id);
     }
 
-    public List<Order> getByUserId(Long userId) {
+    public List<OrderItem> getByOrderId(Long orderId) {
         Session s = sessionFactory.getCurrentSession();
-        return s.createQuery("FROM Order WHERE user.id = :userId", Order.class)
-                .setParameter("userId", userId)
+        return s.createQuery("FROM OrderItem WHERE order.id = :orderId", OrderItem.class)
+                .setParameter("orderId", orderId)
                 .getResultList();
     }
 
     public void delete(Long id) {
         Session s = sessionFactory.getCurrentSession();
-        Order order = s.get(Order.class, id);
-        if (order != null) s.delete(order);
+        OrderItem item = s.get(OrderItem.class, id);
+        if (item != null) s.delete(item);
     }
 }

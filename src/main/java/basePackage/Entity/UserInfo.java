@@ -1,62 +1,46 @@
 package basePackage.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "UserInfo")
+@Table(name = "user_info")
 public class UserInfo {
-	@Id
-	@Column(name = "id")
-	private int id;
-	
-	@Column(name = "firstName")
-	private String firstName;
-	
-	@Column(name = "middleName")
-	private String middleName;
-	
-	@Column(name = "lastName")
-	private String lastName;
-	
-	@Column(name = "address")
-	private String address;
-	
-	@Column(name = "phoneNumber")
-	private int phoneNumber;
 
-	public int getId() {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@Column(name = "user_id")
+	private long userId;
+
+	@Column(name = "full_name", nullable = false, length = 100)
+	private String fullName;
+
+	@Column(name = "address", nullable = false, length = 255)
+	private String address;
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public long getUserId() {
+		return userId;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
-	public String getMiddleName() {
-		return middleName;
+	public String getFullName() {
+		return fullName;
 	}
 
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	public String getAddress() {
@@ -66,14 +50,4 @@ public class UserInfo {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
-	public int getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(int phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-	
-	
 }

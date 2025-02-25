@@ -1,46 +1,45 @@
 package basePackage.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "Order")
+@Table(name = "orders") // Đổi tên bảng tránh xung đột với từ khóa SQL
 public class Order {
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Long id;
 
-	@Column(name = "userId")
-	private int userId;
+	@Column(name = "user_id", nullable = false)
+	private Long userId;
 
-	@Column(name = "isPaid")
-	private boolean isPaid;
+	@Column(name = "is_paid", nullable = false)
+	private Boolean isPaid;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public int getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
-	public boolean isPaid() {
+	public Boolean getIsPaid() {
 		return isPaid;
 	}
 
-	public void setPaid(boolean isPaid) {
+	public void setIsPaid(Boolean isPaid) {
 		this.isPaid = isPaid;
 	}
 
-	
 }

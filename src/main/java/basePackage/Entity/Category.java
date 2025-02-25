@@ -6,23 +6,23 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ProductCategory")
-public class ProductCategory {
+@Table(name = "categories")
+public class Category {
 	@Id
 	@Column(name = "id")
-	private int id;
+	private long id;
 
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "descriptipn")
+	@Column(name = "description")
 	private String description;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
