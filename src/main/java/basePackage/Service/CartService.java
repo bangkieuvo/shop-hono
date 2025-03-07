@@ -46,7 +46,7 @@ public class CartService {
 		cartItemDAO.save(cartItem);
 	}
 
-	public void removeFromCart(Long userId, Long productId) {
+	public void removeFromCart(long userId, long productId) {
 		cartItemDAO.deleteByUserIdAndProductId(userId, productId);
 	}
 
@@ -59,7 +59,7 @@ public class CartService {
 		cartItemDAO.save(item);
 	}
 
-	public void clearCart(Long userId) {
+	public void clearCart(long userId) {
 		cartItemDAO.deleteByUserId(userId);
 	}
 

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "orders") // Đổi tên bảng tránh xung đột với từ khóa SQL
+@Table(name = "orders")
 public class Order {
 
 	@Id

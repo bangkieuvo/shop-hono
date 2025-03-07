@@ -19,7 +19,7 @@ public class User {
 	private String username;
 
 	@Column(name = "hashed_password")
-	private int hashedPassword;
+	private String hashedPassword;
 
 	@Column(name = "email")
 	private String email;
@@ -44,11 +44,11 @@ public class User {
 		this.username = username;
 	}
 
-	public int getHashedPassword() {
+	public String getHashedPassword() {
 		return hashedPassword;
 	}
 
-	public void setHashedPassword(int hashedPassword) {
+	public void setHashedPassword(String hashedPassword) {
 		this.hashedPassword = hashedPassword;
 	}
 

@@ -29,8 +29,8 @@ public class UserInfoDAO {
 
 
 
-    public UserInfo getByUserId(Long userId) {
-        String hql = "FROM UserInfo WHERE user.id = :userId";
+    public UserInfo getByUserId(long userId) {
+        String hql = "FROM UserInfo WHERE user_id = :userId";
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery(hql, UserInfo.class)
                       .setParameter("userId", userId)
@@ -42,7 +42,7 @@ public class UserInfoDAO {
         session.update(userInfo);
     }
 
-    public void deleteByUserId(Long userId) {
+    public void deleteByUserId(long userId) {
         UserInfo userInfo = getByUserId(userId);
         if (userInfo != null) {
         	Session session = sessionFactory.getCurrentSession();

@@ -22,4 +22,4 @@ BEGIN
     CLOSE itemCursor;
     delete from cart_items where user_id = userId;
 END;
-call clearCartByUserId(2);
+-- call clearCartByUserId(3);

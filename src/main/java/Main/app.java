@@ -1,31 +1,25 @@
 package Main;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.Arrays;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-
-import basePackage.DAO.OrderDAO;
-import basePackage.DTO.CartItemDTO;
-import basePackage.Entity.Order;
-import basePackage.Entity.OrderItem;
-import basePackage.Service.CartService;
-
+import basePackage.DAO.UserDAO;
+import basePackage.DAO.UserInfoDAO;
+import basePackage.DTO.UserDTO;
+import basePackage.Entity.User;
+import basePackage.Entity.UserInfo;
+import basePackage.Service.UserService;
+import basePackage.Tool.BCryptHasher;
 
 public class app {
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-		long number = 3;
-		CartService s = (CartService)context.getBean("cartService");
-		s.updateCartItemQuantity(number, 3, 0);
-		for(CartItemDTO item:s.getCartByUserId(number).getCartItems()) {
-			System.out.println(item.getProductName()+"    :     "+item.getQuantity());
-		}
+		UserDAO dao = context.getBean("userDAO",UserDAO.class);
+		User u = dao.get(4);
+		UserInfo ui = context.getBean("userInfoDAO",UserInfoDAO.class).getByUserId(u.getId());
+		UserDTO ud = context.getBean("userService",UserService.class).getUserDTOWithInfo(u);
+		System.out.println(ud.getUserInfo().getFullName());
 	}
 }

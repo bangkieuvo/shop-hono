@@ -1,17 +1,17 @@
 use `shop-hono`;
-INSERT INTO users (username, hashed_password, email) VALUES
-('user1', '257234881', 'user1@example.com'),
-('user2', '257234881', 'user2@example.com'),
-('user3', '257234881', 'user3@example.com'),
-('user4', '257234881', 'user4@example.com'),
-('user5', '257234881', 'user5@example.com'),
-('user6', '257234881', 'user6@example.com'),
-('user7', '257234881', 'user7@example.com'),
-('user8', '257234881', 'user8@example.com'),
-('user9', '257234881', 'user9@example.com'),
-('user10', '257234881', 'user10@example.com');
+insert ignore  INTO users (username, hashed_password, email) VALUES
+('user1', '$2a$10$1ZaG5KyviyoeRFoX4ekrqOgLKzalFLxeHnoYykJs7PwkFpcBXW5vS', 'user1@example.com'),
+('user2', '$2a$10$1ZaG5KyviyoeRFoX4ekrqOgLKzalFLxeHnoYykJs7PwkFpcBXW5vS', 'user2@example.com'),
+('user3', '$2a$10$1ZaG5KyviyoeRFoX4ekrqOgLKzalFLxeHnoYykJs7PwkFpcBXW5vS', 'user3@example.com'),
+('user4', '$2a$10$1ZaG5KyviyoeRFoX4ekrqOgLKzalFLxeHnoYykJs7PwkFpcBXW5vS', 'user4@example.com'),
+('user5', '$2a$10$1ZaG5KyviyoeRFoX4ekrqOgLKzalFLxeHnoYykJs7PwkFpcBXW5vS', 'user5@example.com'),
+('user6', '$2a$10$1ZaG5KyviyoeRFoX4ekrqOgLKzalFLxeHnoYykJs7PwkFpcBXW5vS', 'user6@example.com'),
+('user7', '$2a$10$1ZaG5KyviyoeRFoX4ekrqOgLKzalFLxeHnoYykJs7PwkFpcBXW5vS', 'user7@example.com'),
+('user8', '$2a$10$1ZaG5KyviyoeRFoX4ekrqOgLKzalFLxeHnoYykJs7PwkFpcBXW5vS', 'user8@example.com'),
+('user9', '$2a$10$1ZaG5KyviyoeRFoX4ekrqOgLKzalFLxeHnoYykJs7PwkFpcBXW5vS', 'user9@example.com'),
+('user10', '$2a$10$1ZaG5KyviyoeRFoX4ekrqOgLKzalFLxeHnoYykJs7PwkFpcBXW5vS', 'user10@example.com');
 
-INSERT INTO user_info (user_id, full_name, address) VALUES
+insert ignore  INTO user_info (user_id, full_name, address) VALUES
 (1, 'User One', 'A1 city'),
 (2, 'User Two', 'B2 city'),
 (3, 'User Three', 'C3 city'),
@@ -23,14 +23,14 @@ INSERT INTO user_info (user_id, full_name, address) VALUES
 (9, 'User Nine', 'I9 city'),
 (10, 'User Ten', 'J10 city');
 
-INSERT INTO categories (name, description) VALUES
+insert ignore  INTO categories (name, description) VALUES
 ('Electronics', 'Devices and gadgets like phones, computers, and accessories'),
 ('Fashion', 'Clothing, shoes, and accessories for all seasons'),
 ('Home & Kitchen', 'Furniture, appliances, and home decor'),
 ('Books', 'Fiction, non-fiction, and educational books'),
 ('Sports', 'Sports equipment and outdoor gear');
 
-INSERT INTO products (name, price, stock, category_id, description) VALUES
+insert ignore  INTO products (name, price, stock, category_id, description) VALUES
 ('iPhone 15 Pro Max', 1200.00, 50, 1, 'Smartphone cao cấp của Apple với camera siêu nét'),
 ('MacBook Pro 16', 2500.00, 30, 1, 'Laptop chuyên nghiệp với màn hình 16 inch Retina'),
 ('Samsung Galaxy Z Fold 5', 2000.00, 40, 1, 'Điện thoại gập của Samsung với màn hình lớn'),
@@ -59,7 +59,7 @@ INSERT INTO products (name, price, stock, category_id, description) VALUES
 
 
 
-INSERT INTO wishlist_items (user_id, product_id) VALUES
+insert ignore  INTO wishlist_items (user_id, product_id) VALUES
 (1, 1), (1, 2), (1, 3), (1, 4), (1, 5),
 (2, 2), (2, 6), (2, 7), (2, 8), (2, 9),
 (3, 3), (3, 10), (3, 11), (3, 12),
@@ -71,7 +71,7 @@ INSERT INTO wishlist_items (user_id, product_id) VALUES
 (9, 9), (9, 3), (9, 4),
 (10, 10), (10, 5);
  
-INSERT INTO cart_items (user_id, product_id, quantity) VALUES
+insert ignore  INTO cart_items (user_id, product_id, quantity) VALUES
 (1, 1, 2),
 (1, 2, 1),
 (1, 3, 5),
@@ -83,7 +83,7 @@ INSERT INTO cart_items (user_id, product_id, quantity) VALUES
 (4, 1, 1),
 (5, 4, 3);
 
-INSERT INTO orders (user_id, is_paid) VALUES
+insert ignore  INTO orders (user_id, is_paid) VALUES
 (1, 1),
 (2, 0),
 (3, 1),
@@ -95,7 +95,7 @@ INSERT INTO orders (user_id, is_paid) VALUES
 (9, 0),
 (10, 1);
 
-INSERT INTO order_items (order_id, product_id, quantity, price) VALUES
+insert ignore  INTO order_items (order_id, product_id, quantity, price) VALUES
 -- Đơn hàng 1 có 3 sản phẩm
 (1, 1, 2, 1200.00),
 (1, 5, 2, 3800.00),

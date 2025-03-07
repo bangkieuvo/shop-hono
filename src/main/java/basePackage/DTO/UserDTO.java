@@ -1,37 +1,70 @@
 package basePackage.DTO;
 
 public class UserDTO {
-    private long id;
-    private String username;
-    private String email;
+	private long id;
+	private String username;
+	private String email;
+	private UserInfoDTO userInfo;
 
-    public UserDTO(long id, String username, String email) {
-        this.id = id;
-        this.username = username;
-        this.email = email;
-    }
+	private UserDTO(Builder builder) {
+		this.id = builder.id;
+		this.username = builder.username;
+		this.email = builder.email;
+		this.userInfo = builder.userInfoDTO;
+	}
 
-    public long getId() {
-        return id;
-    }
+	public static class Builder {
+		private long id;
+		private String username;
+		private String email;
+		private UserInfoDTO userInfoDTO;
 
-    public void setId(long id) {
-        this.id = id;
-    }
+		public Builder(long id, String username, String email) {
+			this.id = id;
+			this.username = username;
+			this.email = email;
+		}
 
-    public String getUsername() {
-        return username;
-    }
+		public Builder setUserInfo(UserInfoDTO userInfoDTO) {
+			this.userInfoDTO = userInfoDTO;
+			return this;
+		}
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+		public UserDTO build() {
+			return new UserDTO(this);
+		}
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public long getId() {
+		return id;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public UserInfoDTO getUserInfo() {
+		return userInfo;
+	}
+
+	public void setUserInfo(UserInfoDTO userInfo) {
+		this.userInfo = userInfo;
+	}
+
 }
